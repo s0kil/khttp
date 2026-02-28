@@ -10,15 +10,15 @@ path = "benches/benches.rs"
 harness = false
 
 [dependencies]
-httparse = "1.10.1"
+httparse = "1.10"
 futures-util = "0.3"
-chrono = "0.4.41"
+chrono = "0.4"
 bytes = "1"
 khttp = { path = "..", features = ["epoll", "client"] }
-criterion = { version = "0.7.0", features = [] }
-axum = "0.8.4"
-tokio = { version = "1.46.1", features = ["rt-multi-thread", "macros", "net"] }
-httpdate = "1.0.3"
+criterion = { version = "0.8", features = [] }
+axum = "0.8"
+tokio = { version = "1.49", features = ["rt-multi-thread", "macros", "net"] }
+httpdate = "1.0"
 
 
 [profile.release]
