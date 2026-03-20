@@ -82,11 +82,11 @@ fn now_unix_sec() -> i64 {
     let mut ts = core::mem::MaybeUninit::<Timespec>::uninit();
     let rc = unsafe { clock_gettime(CLOCK_REALTIME_FAST, ts.as_mut_ptr()) };
     if rc == 0 {
-        unsafe { ts.assume_init() }.tv_sec
+        unsafe { ts.assume_init() }.tv_sec.into()
     } else {
         let mut ts2 = core::mem::MaybeUninit::<Timespec>::uninit();
         unsafe { clock_gettime(CLOCK_REALTIME, ts2.as_mut_ptr()) };
-        unsafe { ts2.assume_init() }.tv_sec
+        unsafe { ts2.assume_init() }.tv_sec.into()
     }
 }
 
