@@ -1,9 +1,6 @@
 #![cfg(feature = "epoll")]
-#[cfg(all(
-    feature = "epoll",
-    not(all(target_os = "linux", target_pointer_width = "64"))
-))]
-compile_error!("feature `epoll` requires Linux on a 64-bit target.");
+#[cfg(all(feature = "epoll", not(target_os = "linux")))]
+compile_error!("feature `epoll` requires Linux.");
 
 use super::{ConnectionSetupAction, Server};
 use crate::server::{handle_one_request, HandlerConfig};
