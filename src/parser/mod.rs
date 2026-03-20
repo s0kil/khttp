@@ -1,7 +1,7 @@
 use crate::Headers;
+use HttpParsingError::*;
 use memchr::memchr;
 use std::{error::Error, fmt::Display, io};
-use HttpParsingError::*;
 
 mod request;
 pub mod simd;

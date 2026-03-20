@@ -5,7 +5,7 @@ use std::net::SocketAddr;
 use std::{
     io::Cursor,
     net::TcpStream,
-    sync::{atomic::AtomicU64, Arc},
+    sync::{Arc, atomic::AtomicU64},
     thread::{self},
     time::Duration,
 };

@@ -1,7 +1,7 @@
 use super::{
+    HttpParsingError::{self, *},
     parse_headers, parse_version,
     simd::{match_path_vectored, match_uri_vectored},
-    HttpParsingError::{self, *},
 };
 use crate::{Headers, Method, RequestUri};
 

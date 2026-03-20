@@ -4,8 +4,8 @@ use std::{
     net::{IpAddr, SocketAddr},
     os::fd::AsRawFd,
     sync::{
-        atomic::{AtomicU64, Ordering},
         Arc, RwLock,
+        atomic::{AtomicU64, Ordering},
     },
     time::Instant,
 };

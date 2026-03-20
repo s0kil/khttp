@@ -270,8 +270,8 @@ fn read_request<'a>(
     mut stream: &TcpStream,
     max_size: usize,
 ) -> Result<(&'a [u8], Request<'a>), ReadRequestError> {
-    use std::slice::{from_raw_parts, from_raw_parts_mut};
     use ReadRequestError::*;
+    use std::slice::{from_raw_parts, from_raw_parts_mut};
 
     REQUEST_BUFFER.with(|cell| {
         let mut vec = cell.borrow_mut();

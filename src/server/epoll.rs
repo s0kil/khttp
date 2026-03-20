@@ -3,18 +3,18 @@
 compile_error!("feature `epoll` requires Linux.");
 
 use super::{ConnectionSetupAction, Server};
-use crate::server::{handle_one_request, HandlerConfig};
-use crate::threadpool::{Task, ThreadPool};
 use crate::ResponseHandle;
+use crate::server::{HandlerConfig, handle_one_request};
+use crate::threadpool::{Task, ThreadPool};
 
 use libc::{
-    epoll_create1, epoll_ctl, epoll_event, epoll_wait, EPOLLET, EPOLLIN, EPOLLRDHUP, EPOLL_CTL_ADD,
-    EPOLL_CTL_DEL,
+    EPOLL_CTL_ADD, EPOLL_CTL_DEL, EPOLLET, EPOLLIN, EPOLLRDHUP, epoll_create1, epoll_ctl,
+    epoll_event, epoll_wait,
 };
 use std::net::{TcpListener, TcpStream};
 use std::os::unix::io::{AsRawFd, RawFd};
-use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::{io, ptr};
 
 #[repr(align(64))]

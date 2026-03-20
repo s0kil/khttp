@@ -55,10 +55,10 @@ impl<'a> RequestUri<'a> {
         if self.path_i_end != 0 {
             &self.full[self.path_i_start..]
         } else {
-            if let Some(scheme_i) = self.full.find("://") {
-                if let Some(rel_q) = self.full[scheme_i + 3..].find('?') {
-                    return &self.full[scheme_i + 3 + rel_q..];
-                }
+            if let Some(scheme_i) = self.full.find("://")
+                && let Some(rel_q) = self.full[scheme_i + 3..].find('?')
+            {
+                return &self.full[scheme_i + 3 + rel_q..];
             }
             ""
         }
