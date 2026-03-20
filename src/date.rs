@@ -90,10 +90,13 @@ fn now_unix_sec() -> i64 {
     }
 }
 
-#[repr(C, align(32))]
+/// Matches the C `struct timespec` layout on all targets.
+/// `time_t` and the nsec field are both `long` in POSIX,
+/// which is 32-bit on ILP32 (ARM32) and 64-bit on LP64 (x86-64, AArch64).
+#[repr(C)]
 struct Timespec {
-    tv_sec: i64,
-    tv_nsec: i64,
+    tv_sec: core::ffi::c_long,
+    tv_nsec: core::ffi::c_long,
 }
 
 unsafe extern "C" {
